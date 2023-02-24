@@ -52,7 +52,7 @@
 		AFB609BF29A479920015E6EF = {
 			isa = PBXGroup;
 			children = (
-				AFB609CA29A479920015E6EF /* BreakingStuff */,
+				AFB609CA29A479920015E6EF /* Catalyst */,
 				AFB609C929A479920015E6EF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -65,7 +65,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		AFB609CA29A479920015E6EF /* BreakingStuff */ = {
+		AFB609CA29A479920015E6EF /* Catalyst */ = {
 			isa = PBXGroup;
 			children = (
 				AFB609E029A47B3E0015E6EF /* StructureDelegates */,
@@ -74,7 +74,7 @@
 				AFB609D629A479950015E6EF /* LaunchScreen.storyboard */,
 				AFB609D929A479950015E6EF /* Info.plist */,
 			);
-			path = BreakingStuff;
+			path = Catalyst;
 			sourceTree = "<group>";
 		};
 		AFB609DF29A479E40015E6EF /* Views */ = {
