@@ -65,8 +65,8 @@ class ImageViewVC: UIViewController {
             imagePickButton.heightAnchor.constraint(equalToConstant: 30),
             imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100),
-            imageView.widthAnchor.constraint(equalToConstant: 200),
-            imageView.heightAnchor.constraint(equalToConstant: 200),
+            imageView.widthAnchor.constraint(equalToConstant: 220),
+            imageView.heightAnchor.constraint(equalToConstant: 220),
         ])
     }
 
@@ -99,6 +99,5 @@ extension ImageViewVC: PHPickerViewControllerDelegate {
         })
 
     }
-
 
 }
