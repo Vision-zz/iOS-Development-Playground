@@ -7,21 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AFA1DEC329A5D808008976DF /* ImageViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA1DEC229A5D808008976DF /* ImageViewVC.swift */; };
 		AFB609CC29A479920015E6EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB609CB29A479920015E6EF /* AppDelegate.swift */; };
 		AFB609CE29A479920015E6EF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB609CD29A479920015E6EF /* SceneDelegate.swift */; };
-		AFB609D029A479920015E6EF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB609CF29A479920015E6EF /* ViewController.swift */; };
 		AFB609D529A479950015E6EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFB609D429A479950015E6EF /* Assets.xcassets */; };
 		AFB609D829A479950015E6EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFB609D629A479950015E6EF /* LaunchScreen.storyboard */; };
+		AFB609E229A47BD60015E6EF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB609E129A47BD60015E6EF /* HomeViewController.swift */; };
+		AFB609E529A4833B0015E6EF /* ActivityIndicatorViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB609E429A4833B0015E6EF /* ActivityIndicatorViewVC.swift */; };
+		AFB609E829A4E2CD0015E6EF /* CalendarViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB609E729A4E2CD0015E6EF /* CalendarViewVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AFB609C829A479920015E6EF /* BreakingStuff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BreakingStuff.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFA1DEC229A5D808008976DF /* ImageViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewVC.swift; sourceTree = "<group>"; };
+		AFB609C829A479920015E6EF /* Catalyst.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Catalyst.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFB609CB29A479920015E6EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFB609CD29A479920015E6EF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AFB609CF29A479920015E6EF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AFB609D429A479950015E6EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AFB609D729A479950015E6EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AFB609D929A479950015E6EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AFB609E129A47BD60015E6EF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		AFB609E429A4833B0015E6EF /* ActivityIndicatorViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorViewVC.swift; sourceTree = "<group>"; };
+		AFB609E729A4E2CD0015E6EF /* CalendarViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +41,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AFA1DEC129A5D753008976DF /* ImageView */ = {
+			isa = PBXGroup;
+			children = (
+				AFA1DEC229A5D808008976DF /* ImageViewVC.swift */,
+			);
+			path = ImageView;
+			sourceTree = "<group>";
+		};
 		AFB609BF29A479920015E6EF = {
 			isa = PBXGroup;
 			children = (
@@ -46,7 +60,7 @@
 		AFB609C929A479920015E6EF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AFB609C829A479920015E6EF /* BreakingStuff.app */,
+				AFB609C829A479920015E6EF /* Catalyst.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -54,10 +68,8 @@
 		AFB609CA29A479920015E6EF /* BreakingStuff */ = {
 			isa = PBXGroup;
 			children = (
+				AFB609E029A47B3E0015E6EF /* StructureDelegates */,
 				AFB609DF29A479E40015E6EF /* Views */,
-				AFB609CB29A479920015E6EF /* AppDelegate.swift */,
-				AFB609CD29A479920015E6EF /* SceneDelegate.swift */,
-				AFB609CF29A479920015E6EF /* ViewController.swift */,
 				AFB609D429A479950015E6EF /* Assets.xcassets */,
 				AFB609D629A479950015E6EF /* LaunchScreen.storyboard */,
 				AFB609D929A479950015E6EF /* Info.plist */,
@@ -68,16 +80,45 @@
 		AFB609DF29A479E40015E6EF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AFA1DEC129A5D753008976DF /* ImageView */,
+				AFB609E329A483120015E6EF /* ActivityIndicator */,
+				AFB609E629A4E1D30015E6EF /* CalendarView */,
+				AFB609E129A47BD60015E6EF /* HomeViewController.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		AFB609E029A47B3E0015E6EF /* StructureDelegates */ = {
+			isa = PBXGroup;
+			children = (
+				AFB609CB29A479920015E6EF /* AppDelegate.swift */,
+				AFB609CD29A479920015E6EF /* SceneDelegate.swift */,
+			);
+			path = StructureDelegates;
+			sourceTree = "<group>";
+		};
+		AFB609E329A483120015E6EF /* ActivityIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				AFB609E429A4833B0015E6EF /* ActivityIndicatorViewVC.swift */,
+			);
+			path = ActivityIndicator;
+			sourceTree = "<group>";
+		};
+		AFB609E629A4E1D30015E6EF /* CalendarView */ = {
+			isa = PBXGroup;
+			children = (
+				AFB609E729A4E2CD0015E6EF /* CalendarViewVC.swift */,
+			);
+			path = CalendarView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		AFB609C729A479920015E6EF /* BreakingStuff */ = {
+		AFB609C729A479920015E6EF /* Catalyst */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AFB609DC29A479950015E6EF /* Build configuration list for PBXNativeTarget "BreakingStuff" */;
+			buildConfigurationList = AFB609DC29A479950015E6EF /* Build configuration list for PBXNativeTarget "Catalyst" */;
 			buildPhases = (
 				AFB609C429A479920015E6EF /* Sources */,
 				AFB609C529A479920015E6EF /* Frameworks */,
@@ -87,9 +128,9 @@
 			);
 			dependencies = (
 			);
-			name = BreakingStuff;
+			name = Catalyst;
 			productName = BreakingStuff;
-			productReference = AFB609C829A479920015E6EF /* BreakingStuff.app */;
+			productReference = AFB609C829A479920015E6EF /* Catalyst.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -107,7 +148,7 @@
 					};
 				};
 			};
-			buildConfigurationList = AFB609C329A479920015E6EF /* Build configuration list for PBXProject "BreakingStuff" */;
+			buildConfigurationList = AFB609C329A479920015E6EF /* Build configuration list for PBXProject "Catalyst" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -120,7 +161,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AFB609C729A479920015E6EF /* BreakingStuff */,
+				AFB609C729A479920015E6EF /* Catalyst */,
 			);
 		};
 /* End PBXProject section */
@@ -142,9 +183,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AFB609D029A479920015E6EF /* ViewController.swift in Sources */,
 				AFB609CC29A479920015E6EF /* AppDelegate.swift in Sources */,
 				AFB609CE29A479920015E6EF /* SceneDelegate.swift in Sources */,
+				AFA1DEC329A5D808008976DF /* ImageViewVC.swift in Sources */,
+				AFB609E229A47BD60015E6EF /* HomeViewController.swift in Sources */,
+				AFB609E529A4833B0015E6EF /* ActivityIndicatorViewVC.swift in Sources */,
+				AFB609E829A4E2CD0015E6EF /* CalendarViewVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,8 +330,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BreakingStuff/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -313,8 +356,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BreakingStuff/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -333,7 +375,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AFB609C329A479920015E6EF /* Build configuration list for PBXProject "BreakingStuff" */ = {
+		AFB609C329A479920015E6EF /* Build configuration list for PBXProject "Catalyst" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AFB609DA29A479950015E6EF /* Debug */,
@@ -342,7 +384,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AFB609DC29A479950015E6EF /* Build configuration list for PBXNativeTarget "BreakingStuff" */ = {
+		AFB609DC29A479950015E6EF /* Build configuration list for PBXNativeTarget "Catalyst" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AFB609DD29A479950015E6EF /* Debug */,
