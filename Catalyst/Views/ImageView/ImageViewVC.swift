@@ -8,6 +8,7 @@
 import UIKit
 import PhotosUI
 
+
 class ImageViewVC: UIViewController {
 
     lazy var imagePicker: PHPickerViewController = {
@@ -20,22 +21,6 @@ class ImageViewVC: UIViewController {
         return picker
     }()
 
-    lazy var imagePickButton: UIButton = {
-        var button = UIButton(type: .system)
-        var buttonConfiguration = UIButton.Configuration.filled()
-        buttonConfiguration.cornerStyle = .capsule
-        buttonConfiguration.title = "Pick Image"
-        buttonConfiguration.image = UIImage(systemName: "hand.tap")
-        buttonConfiguration.imagePadding = 5
-        buttonConfiguration.baseBackgroundColor = .systemBlue
-        button.configuration = buttonConfiguration
-        button.layer.shadowRadius = 0.5
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(imagePickButtonOnClick), for: .touchDown)
-        button.tintColor = .label
-        return button
-    }()
-
     lazy var imageView: UIImageView = {
         var imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -44,29 +29,26 @@ class ImageViewVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = Constants.UIBackgroundColor
         title = "Image View"
         navigationController?.navigationBar.prefersLargeTitles = true
 
-        view.addSubview(imagePickButton)
         view.addSubview(imageView)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(buttonOnClick))
         addConstraints()
 
     }
 
-    @objc func imagePickButtonOnClick() {
+    @objc func buttonOnClick() {
         present(imagePicker, animated: true)
     }
 
     func addConstraints() {
         NSLayoutConstraint.activate([
-            imagePickButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            imagePickButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -150),
-            imagePickButton.heightAnchor.constraint(equalToConstant: 30),
             imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100),
-            imageView.widthAnchor.constraint(equalToConstant: 220),
-            imageView.heightAnchor.constraint(equalToConstant: 220),
+            imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            imageView.widthAnchor.constraint(equalToConstant: 250),
+            imageView.heightAnchor.constraint(equalToConstant: 250),
         ])
     }
 

@@ -37,7 +37,7 @@ class ActivityIndicatorViewVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = UIColor(named: "BackgroundColor")
         title = "Activity Indicator View"
         navigationController?.navigationBar.prefersLargeTitles = true
         

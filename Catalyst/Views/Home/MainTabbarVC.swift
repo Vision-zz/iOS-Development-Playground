@@ -12,20 +12,24 @@ class MainTabbarVC: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let tableView = UINavigationController(rootViewController: HomeTableViewVC())
-        let collectionView = UINavigationController(rootViewController: HomeCollectionViewVC())
+        tabBar.isTranslucent = true
 
-        tableView.tabBarItem.image = UIImage(systemName: "list.bullet")
-        tableView.title = "Table View"
-        tableView.navigationBar.prefersLargeTitles = true
+        let tableViewNavController = UINavigationController(rootViewController: HomeTableViewVC())
+        let collectionViewNavController = UINavigationController(rootViewController: HomeCollectionViewVC())
 
-        collectionView.tabBarItem.image = UIImage(systemName: "square.grid.2x2")
-        collectionView.title = "Collection View"
-        collectionView.navigationBar.prefersLargeTitles = true
+        tableViewNavController.tabBarItem.image = UIImage(systemName: "list.bullet")
+        tableViewNavController.title = "Table View"
+        tableViewNavController.navigationBar.prefersLargeTitles = true
+        tableViewNavController.navigationBar.backgroundColor = UIColor(named: "BackgroundColor")
+
+        collectionViewNavController.tabBarItem.image = UIImage(systemName: "square.grid.2x2")
+        collectionViewNavController.title = "Collection View"
+        collectionViewNavController.navigationBar.prefersLargeTitles = true
+        collectionViewNavController.navigationBar.backgroundColor = UIColor(named: "BackgroundColor")
 
         tabBar.tintColor = .label
         tabBar.isTranslucent = true
-        viewControllers = [tableView, collectionView]
+        viewControllers = [tableViewNavController, collectionViewNavController]
 
         setViewControllers(viewControllers, animated: true)
 
