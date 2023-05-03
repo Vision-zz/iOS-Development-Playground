@@ -25,7 +25,7 @@ class HomeTableViewVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = UIColor(named: "BackgroundColor")
+        view.backgroundColor = Constants.UIBackgroundColor
         self.title = "Table View"
 
         updateDataSourceFor(allElements: false)
@@ -39,7 +39,7 @@ class HomeTableViewVC: UITableViewController {
         tableView.separatorStyle = .none
         tableView.allowsSelectionDuringEditing = true
         tableView.allowsMultipleSelectionDuringEditing = true
-        tableView.backgroundColor = UIColor(named: "BackgroundColor")
+        tableView.backgroundColor = Constants.UIBackgroundColor
     }
 
     func configureRightNavbarButton() {
@@ -54,15 +54,6 @@ class HomeTableViewVC: UITableViewController {
         }
         dataSource = []
         var displayableSections = rawData.filter({ $0.display })
-
-//        displayableSections.forEach({ section in
-//            section.controllers = section.controllers.filter({ $0.display })
-//            dataSource.append(SectionData(section.sectionName, display: section.display, controllers: section.controllers.filter { $0.display }))
-//        })
-
-//        for section in displayableSections {
-//            section.controllers = section.controllers.filter({ $0.display })
-//        }
 
         for i in 0..<displayableSections.count {
             displayableSections[i].controllers = displayableSections[i].controllers.filter({ $0.display })
@@ -187,7 +178,7 @@ extension HomeTableViewVC: SectionButtonDelegate {
         config.imageProperties.tintColor = .label
 
         cell.contentConfiguration = config
-        cell.backgroundColor = UIColor(named: "BackgroundColor")
+        cell.backgroundColor = Constants.UIBackgroundColor
         return cell
     }
 
@@ -262,7 +253,11 @@ extension HomeTableViewVC: SectionButtonDelegate {
     }
 
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        .insert
+        .none
+    }
+
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+       
     }
 
     override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {

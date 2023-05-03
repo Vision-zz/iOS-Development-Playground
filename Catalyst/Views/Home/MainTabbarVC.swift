@@ -20,12 +20,12 @@ class MainTabbarVC: UITabBarController {
         tableViewNavController.tabBarItem.image = UIImage(systemName: "list.bullet")
         tableViewNavController.title = "Table View"
         tableViewNavController.navigationBar.prefersLargeTitles = true
-        tableViewNavController.navigationBar.backgroundColor = UIColor(named: "BackgroundColor")
+        tableViewNavController.navigationBar.backgroundColor = Constants.UIBackgroundColor
 
         collectionViewNavController.tabBarItem.image = UIImage(systemName: "square.grid.2x2")
         collectionViewNavController.title = "Collection View"
         collectionViewNavController.navigationBar.prefersLargeTitles = true
-        collectionViewNavController.navigationBar.backgroundColor = UIColor(named: "BackgroundColor")
+        collectionViewNavController.navigationBar.backgroundColor = Constants.UIBackgroundColor
 
         tabBar.tintColor = .label
         tabBar.isTranslucent = true

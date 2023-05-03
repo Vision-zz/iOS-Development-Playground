@@ -10,7 +10,7 @@ import PhotosUI
 
 
 class ImageViewVC: UIViewController {
-
+    typealias pjsj = UIViewController 
     lazy var imagePicker: PHPickerViewController = {
         var config = PHPickerConfiguration(photoLibrary: .shared())
         config.filter = PHPickerFilter.any(of: [.images, .livePhotos, .videos])

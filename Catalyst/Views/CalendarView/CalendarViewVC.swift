@@ -20,7 +20,7 @@ class CalendarViewVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = UIColor(named: "BackgroundColor")
+        view.backgroundColor = Constants.UIBackgroundColor
         title = "Calendar View"
         navigationController?.navigationBar.prefersLargeTitles = true
 

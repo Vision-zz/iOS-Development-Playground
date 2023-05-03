@@ -28,7 +28,7 @@ class HomeCollectionViewVC: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = UIColor(named: "BackgroundColor")
+        view.backgroundColor = Constants.UIBackgroundColor
         self.title = "Collection View"
         navigationController?.navigationBar.prefersLargeTitles = true
 
@@ -39,7 +39,7 @@ class HomeCollectionViewVC: UICollectionViewController {
 
     func configureCollectionView() {
         collectionView.register(CatalystCollectionViewCell.self, forCellWithReuseIdentifier: CatalystCollectionViewCell.identifier)
-        collectionView.backgroundColor = UIColor(named: "BackgroundColor")
+        collectionView.backgroundColor = Constants.UIBackgroundColor
     }
 
     func updateLayout() {

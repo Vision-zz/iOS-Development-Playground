@@ -10,4 +10,5 @@ import UIKit
 
 struct Constants {
     public static let UIBackgroundColor = UIColor(named: "BackgroundColor")
+    public static let ContrastForeground = UIColor(named: "ContrastForeground")
 }

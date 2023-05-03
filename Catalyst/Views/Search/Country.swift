@@ -9,25 +9,13 @@ import Foundation
 import UIKit
 
 struct Country: Decodable {
-    struct Currency: Decodable {
-        var code: String
-        var name: String
-        var symbol: String?
-    }
-
-    struct Language: Decodable {
-        var code: String
-        var name: String
-    }
-
     var name: String
     var code: String
-    var capital: String
-    var region: String
-    var currency: Currency
-    var language: Language
+    var capital: String?
+    var continent: String
+    var subregion: String?
+    var languages: [String]?
     var flag: String
-    var diallingCode: String
-    var isoCode: String
-
+    var timezones: [String]
+    var area: String
 }

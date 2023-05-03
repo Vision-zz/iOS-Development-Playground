@@ -7,12 +7,16 @@
 
 import UIKit
 
-class SearchVC: UIViewController {
+class MainSearchVC: UIViewController {
+
+    var rawData: [Country] = []
+
+    lazy var dataSource: [Country] = rawData.sorted { $0.name < $1.name }
 
     lazy var countryTable: UITableView = {
         var table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
-        table.register(UITableViewCell.self, forCellReuseIdentifier: "SearchTableCell")
+        table.register(UITableViewCell.self, forCellReuseIdentifier: "MainSearchVCTableCell")
         table.separatorStyle = .none
         table.backgroundColor = Constants.UIBackgroundColor
         table.delegate = self
@@ -21,12 +25,10 @@ class SearchVC: UIViewController {
         return table
     }()
 
-    var rawData: [Country] = []
-
-    lazy var dataSource: [Country] = rawData
+    lazy var resultsController = ResultsController(dataSource: rawData)
 
     lazy var searchController: UISearchController = {
-        let search = UISearchController()
+        let search = UISearchController(searchResultsController: ResultsController(dataSource: rawData))
         search.searchBar.translatesAutoresizingMaskIntoConstraints = false
         search.searchBar.placeholder = "Search country"
         search.searchBar.searchBarStyle = .prominent
@@ -35,6 +37,8 @@ class SearchVC: UIViewController {
         search.searchBar.autocapitalizationType = .none
         search.hidesNavigationBarDuringPresentation = true
         search.searchBar.returnKeyType = .done
+        search.showsSearchResultsController = true
+        search.searchBar.showsSearchResultsButton = true
         return search
     }()
 
@@ -47,17 +51,44 @@ class SearchVC: UIViewController {
     }
 
     func configureUI() {
-        view.backgroundColor = Constants.UIBackgroundColor
+
         title = "Search"
+        view.backgroundColor = Constants.UIBackgroundColor
         navigationController?.navigationBar.prefersLargeTitles = true
         view.addSubview(countryTable)
+
+        let searchBarButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchButtonOnClick))
+        searchBarButton.tintColor = .label
+
+        let menuElement: [UIAction] = [
+            UIAction(title: "Ascending", image: UIImage(systemName: "chevron.up.circle"), state: .on) { [weak self] _ in
+                self?.dataSource = self?.dataSource.sorted(by: { $0.name < $1.name }) ?? []
+                self?.countryTable.reloadData()
+            },
+            UIAction(title: "Descending", image: UIImage(systemName: "chevron.down.circle")){ [weak self] _ in
+                self?.dataSource = self?.dataSource.sorted(by: { $0.name > $1.name }) ?? []
+                self?.countryTable.reloadData()
+            },
+        ]
+
+        let sortMenu = UIMenu(image: UIImage(systemName: "arrow.up.arrow.down"), identifier: nil, options: [.singleSelection], children: menuElement)
+
+        let sortBarButton = UIBarButtonItem()
+        sortBarButton.image = UIImage(systemName: "arrow.up.arrow.down")
+        sortBarButton.tintColor = .label
+        sortBarButton.menu = sortMenu
+
+        navigationItem.rightBarButtonItems = [searchBarButton, sortBarButton]
         navigationItem.searchController = searchController
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(buttonOnClick))
         navigationItem.hidesSearchBarWhenScrolling = true
     }
 
-    @objc func buttonOnClick() {
+    @objc func searchButtonOnClick() {
         searchController.searchBar.becomeFirstResponder()
+    }
+
+    @objc func sortButtonOnClick() {
+
     }
 
     func loadData() {
@@ -66,16 +97,17 @@ class SearchVC: UIViewController {
         let jsonUrl = URL(fileURLWithPath: jsonUrlString)
         let jsonString = try? String(contentsOf: jsonUrl, encoding: .utf8)
         guard let jsonString = jsonString else { return }
-        let arr = (try? JSONDecoder().decode([Country].self, from: Data(jsonString.utf8))) ?? []
-        self.rawData = arr
+
+        do {
+            let arr = try JSONDecoder().decode([Country].self, from: Data(jsonString.utf8))
+            self.rawData =  arr
+        } catch {
+            self.rawData = []
+        }
     }
 
     func configureConstraints() {
         NSLayoutConstraint.activate([
-            //            searchController.searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            //            searchController.searchBar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            //            searchController.searchBar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-
             countryTable.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             countryTable.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             countryTable.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
@@ -85,49 +117,43 @@ class SearchVC: UIViewController {
 
 }
 
-extension SearchVC: UITableViewDelegate, UITableViewDataSource {
+extension MainSearchVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         dataSource.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchTableCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MainSearchVCTableCell", for: indexPath)
         var config = cell.defaultContentConfiguration()
         config.text = dataSource[indexPath.row].name
         config.secondaryText = dataSource[indexPath.row].capital
+        config.secondaryTextProperties.color = .secondaryLabel
+        cell.accessoryType = .detailButton
         cell.contentConfiguration = config
         cell.backgroundColor = Constants.UIBackgroundColor
         return cell
     }
 
-
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        present(UINavigationController(rootViewController: CountryDetailsVC(data: dataSource[indexPath.row])), animated: true)
+    }
 
 }
 
-extension SearchVC: UISearchBarDelegate, UISearchControllerDelegate {
+extension MainSearchVC: UISearchBarDelegate, UISearchControllerDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText.isEmpty {
-            dataSource = rawData
-        } else {
-            guard let regex = try? Regex(".*\(searchText.lowercased()).*") else { return }
-            dataSource = rawData.filter({ country in
-                let match = country.name.lowercased().firstMatch(of: regex)
-                guard let _ = match else { return false }
-                return true
-            })
-            dataSource += rawData.filter({ country in
-                let match = country.capital?.lowercased().firstMatch(of: regex)
-                guard let _ = match else { return false }
-                return true
-            })
-        }
-        countryTable.reloadData()
+
     }
+    
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         dataSource = rawData
         countryTable.reloadData()
+    }
+
+    func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
+        print("Bookmark")
     }
 
 }

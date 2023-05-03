@@ -50,7 +50,7 @@ class CatalystCollectionViewCell: UICollectionViewCell {
     }
 
     func configureCell() {
-        self.backgroundColor = UIColor(named: "BackgroundDark")
+        self.backgroundColor = Constants.ContrastForeground
         self.layer.cornerRadius = 15
         self.layer.borderWidth = 2
         self.layer.borderColor = UIColor.clear.cgColor
